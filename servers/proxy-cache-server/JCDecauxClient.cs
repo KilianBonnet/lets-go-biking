@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 class JCDecauxClient
@@ -11,32 +12,26 @@ class JCDecauxClient
     private readonly HttpClient client = new HttpClient();
     private const string BASE_URL = "https://api.jcdecaux.com/vls/v1/";
 
-    // Contract configuration
-    private readonly TimeSpan contractRequestFrequency = new TimeSpan(0, 5, 0); // 5 minutes
-    private DateTime contratsLastRequest;
-    private string contractsJson = "";
-
     private JCDecauxClient(){}
 
-    public async Task<string> getContractsAsync()
+    public async Task<string> RequestContractsAsync()
     {
-        if (ContractsOutOfDate())
-            contractsJson = await RequestContractsAsync();
-        return contractsJson;
-    }
-
-    private bool ContractsOutOfDate()
-    {
-        return contractsJson == "" || (DateTime.Now - contratsLastRequest > contractRequestFrequency);
-    }
-
-    private async Task<string> RequestContractsAsync()
-    {
-        contratsLastRequest = DateTime.Now;
-
+        Thread.Sleep(5000); // For pedagogic purpose, will simulate a long server response time
         string requestedURL = BASE_URL + "contracts?apiKey=" + Config.JC_DECAUX_API_KEY;
         HttpResponseMessage response = await client.GetAsync(requestedURL);
-        return await response.Content.ReadAsStringAsync();
+        if(response.IsSuccessStatusCode)
+            return await response.Content.ReadAsStringAsync();
+        return null;
+    }
+
+    public async Task<string> RequestStationsAsync(string contractName)
+    {
+        Thread.Sleep(5000); // For pedagogic purpose, will simulate a long server response time
+        string requestedURL = BASE_URL + "stations?contract=" + contractName + "&apiKey=" + Config.JC_DECAUX_API_KEY;
+        HttpResponseMessage response = await client.GetAsync(requestedURL);
+        if (response.IsSuccessStatusCode)
+            return await response.Content.ReadAsStringAsync();
+        return null;
     }
 }
 

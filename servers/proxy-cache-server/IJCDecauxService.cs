@@ -9,7 +9,10 @@ namespace proxy_cache_server
     public interface IJCDecauxService
     {
         [OperationContract]
-        Task<string> GetContracts();
+        Task<string> GetContractsAsync();
+
+        [OperationContract]
+        Task<string> GetStationsAsync(string contractName);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

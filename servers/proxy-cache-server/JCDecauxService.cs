@@ -5,11 +5,16 @@ namespace proxy_cache_server
 {
     public class JCDecauxService : IJCDecauxService
     {
-        private readonly JCDecauxClient JCDecauxClient = JCDecauxClient.Istance;
+        private readonly CacheManager cacheManager = CacheManager.Instance;
 
-        public Task<string> GetContracts()
+        public async Task<string> GetContractsAsync()
         {
-            return JCDecauxClient.getContractsAsync();
+            return await cacheManager.GetContractsAsync();
+        }
+
+        public async Task<string> GetStationsAsync(string contractName)
+        {
+            return await cacheManager.GetStationsAsync(contractName);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
