@@ -24,7 +24,7 @@ class CacheManager
 
     public async Task<string> GetStationsAsync(string contractName)
     {
-        if (stationsCaches.Count == 0)
+        if (stationsCaches.Count == 0 || contractsCache.IsOutdated())
             await GetContractsAsync();
 
         if (!stationsCaches.ContainsKey(contractName))
