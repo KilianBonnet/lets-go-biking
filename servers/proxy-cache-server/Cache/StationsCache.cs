@@ -9,16 +9,15 @@ class StationsCache : Cache
         this.contractName = contractName;
     }
 
-    public async Task<bool> Regenerate()
+    public async Task Regenerate()
     {
         string response = await JCDecauxClient.Istance.RequestStationsAsync(contractName);
 
         // If the the request leads to an unsuccessful response code
         if (response == null)
-            return false;
+            return;
 
         lastUpdate = DateTime.Now;
         cachedJson = response;
-        return true;
     }
 }
