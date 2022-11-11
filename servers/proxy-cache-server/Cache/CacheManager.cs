@@ -6,42 +6,66 @@ class CacheManager
 {
     // Singleton design pattern
     public static CacheManager Instance = new CacheManager();
+    private JCDecauxCache JCDecauxCache = new JCDecauxCache();
 
-    private ContractsCache contractsCache = new ContractsCache();
-    private Dictionary<string, StationsCache> stationsCaches = new Dictionary<string, StationsCache>();
-
-    public class Contract { public string name; }
-
-        public async Task<string> GetContractsAsync()
+    public async Task<string> GetContractsAsync()
     {
-        if (contractsCache.IsOutdated())
-        {
-            await contractsCache.Regenerate();
-            UpdatecontractNameList(contractsCache);
-        }
-        return contractsCache.cachedJson;
+        // Check if the JCDecauxCache is outdated. If so, regenerate it.
+        if (JCDecauxCache.IsOutdated())
+            await JCDecauxCache.Regenerate();
+
+        return JCDecauxCache.cachedJson;
     }
 
     public async Task<string> GetStationsAsync(string contractName)
     {
-        if (stationsCaches.Count == 0 || contractsCache.IsOutdated())
-            await GetContractsAsync();
+        // Check if the JCDecauxCache is outdated. If so, regenerate it.
+        if (JCDecauxCache.IsOutdated())
+            await JCDecauxCache.Regenerate();
 
-        if (!stationsCaches.ContainsKey(contractName))
+        // Find the CachedContract in the JCDecauxCache
+        ContractCahe contractCache = JCDecauxCache.FindContractCache(contractName);
+
+        // If the contractCache is not found. This is a bad request
+        if (contractCache == null)
             return "{\"Error\":\"Bad Request\"}";
 
-        StationsCache stationsCache = stationsCaches[contractName];
-        if (stationsCache.IsOutdated())
-            await stationsCache.Regenerate();
-        return stationsCache.cachedJson;
+        // Check if the ContractCache is outdated. If so, regenerate it.
+        if (contractCache.IsOutdated())
+            await contractCache.Regenerate();
+
+        return contractCache.cachedJson;
     }
 
-    private void UpdatecontractNameList(ContractsCache newCache)
+    public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
     {
-        List<Contract> contracts = JsonConvert.DeserializeObject<List<Contract>>(newCache.cachedJson);
-        foreach (Contract contract in contracts)
-            if (!stationsCaches.ContainsKey(contract.name))
-                stationsCaches[contract.name] = new StationsCache(contract.name);
+        // Check if the JCDecauxCache is outdated. If so, regenerate it.
+        if (JCDecauxCache.IsOutdated())
+            await JCDecauxCache.Regenerate();
+
+        // Find the CachedContract in the JCDecauxCache
+        ContractCahe contractCache = JCDecauxCache.FindContractCache(contractName);
+
+        // If the contractCache is not found. This is a bad request
+        if (contractCache == null)
+            return "{\"Error\":\"Bad Request\"}";
+
+        // Check if the ContractCahe is outdated. If so, regenerate it.
+        if (contractCache.IsOutdated())
+            await contractCache.Regenerate();
+
+        // Find the StationCache in the ContractCache
+        StationCache stationCache = contractCache.FindStationCache(stationNumber);
+
+        // If the stationCache is not found. This is a bad request
+        if (contractCache == null)
+            return "{\"Error\":\"Bad Request\"}";
+
+        // Check if the stationCache is outdated. If so, regenerate it.
+        if (stationCache.IsOutdated())
+            await stationCache.Regenerate();
+
+        return stationCache.cachedJson;
     }
 }
 

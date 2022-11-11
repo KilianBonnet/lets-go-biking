@@ -15,6 +15,9 @@ namespace proxy_cache_server
         Task<string> GetStationsAsync(string contractName);
 
         [OperationContract]
+        Task<string> GetStationInfoAsync(string contractName, int stationNumber);
+
+        [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here

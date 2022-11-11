@@ -17,6 +17,11 @@ namespace proxy_cache_server
             return await cacheManager.GetStationsAsync(contractName);
         }
 
+        public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
+        {
+            return await cacheManager.GetStationInfoAsync(contractName, stationNumber);
+        }
+
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
