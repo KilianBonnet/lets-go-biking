@@ -58,7 +58,7 @@ class CacheManager
         StationCache stationCache = contractCache.FindStationCache(stationNumber);
 
         // If the stationCache is not found. This is a bad request
-        if (contractCache == null)
+        if (stationCache == null)
             return "{\"Error\":\"Bad Request\"}";
 
         // Check if the stationCache is outdated. If so, regenerate it.
