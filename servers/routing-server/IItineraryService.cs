@@ -11,6 +11,6 @@ namespace routing_server
     public interface IItineraryService
     {
         [OperationContract]
-        string GetData(int value);
+        string GetItinerary(string departureAddress, string arrivalAddress);
     }
 }

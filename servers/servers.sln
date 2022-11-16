@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "proxy-cache-server", "proxy-cache-server\proxy-cache-server.csproj", "{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "routing-server", "routing-server\routing-server.csproj", "{AD4C91FC-02BA-4BD3-9060-44065B46F947}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE} = {9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

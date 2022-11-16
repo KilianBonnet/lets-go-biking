@@ -9,9 +9,9 @@ namespace routing_server
 {
     public class ItineraryService : IItineraryService
     {
-        public string GetData(int value)
+        public string GetItinerary(string departureAddress, string arrivalAddress)
         {
-            return string.Format("You entered: {0}", value);
+            return "Not implemented";
         }
     }
 }
