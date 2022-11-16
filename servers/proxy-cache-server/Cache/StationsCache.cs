@@ -9,10 +9,10 @@ namespace proxy_cache_server.Cache
     {
         private readonly string contractName;
         private readonly Dictionary<int, StationCache> stationsCache = new Dictionary<int, StationCache>();
-        public class Station { public int number; }
+        private class Station { public int number; }
 
         // Set here the lifespan of the cache
-        public StationsCache(string contractName) : base(new TimeSpan(0, 5, 0))
+        public StationsCache(string contractName) : base(new TimeSpan(24, 0, 0))
         {
             this.contractName = contractName;
         }
@@ -33,11 +33,11 @@ namespace proxy_cache_server.Cache
 
         private void UpdateStationsCache()
         {
-            // Retrive all stations from the json
+            // Retrieve all stations from the json
             List<Station> stations = JsonConvert.DeserializeObject<List<Station>>(cachedJson);
 
             // Check if there is something to update
-            if (stations.Count == stationsCache.Count)
+            if (stations == null || stations.Count == stationsCache.Count)
                 return;
 
             // Associate the name of the station to a new empty cache to be filled
@@ -47,9 +47,7 @@ namespace proxy_cache_server.Cache
 
         public StationCache FindStationCache(int stationNumber)
         {
-            if (stationsCache.ContainsKey(stationNumber))
-                return stationsCache[stationNumber];
-            return null;
+            return stationsCache.ContainsKey(stationNumber) ? stationsCache[stationNumber] : null;
         }
     }
 }

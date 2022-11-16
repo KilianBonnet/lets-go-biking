@@ -4,9 +4,11 @@ namespace proxy_cache_server.Cache
 {
     internal class CacheManager
     {
+        private readonly ContractsCache contractsCache = new ContractsCache();
+        
         // Singleton design pattern
-        public static CacheManager Instance = new CacheManager();
-        private ContractsCache contractsCache = new ContractsCache();
+        public static readonly CacheManager Instance = new CacheManager();
+        private CacheManager() {}
 
         public async Task<string> GetContractsAsync()
         {

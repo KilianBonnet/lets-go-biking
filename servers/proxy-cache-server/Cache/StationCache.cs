@@ -7,7 +7,7 @@ namespace proxy_cache_server.Cache
     {
         private readonly string contractName;
     
-        public StationCache(string contractName) : base(new TimeSpan(0, 0, 10))
+        public StationCache(string contractName) : base(new TimeSpan(0, 1, 0))
         {
             this.contractName = contractName;
         }

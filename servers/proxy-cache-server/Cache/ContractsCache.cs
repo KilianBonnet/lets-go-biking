@@ -8,10 +8,10 @@ namespace proxy_cache_server.Cache
     internal class ContractsCache : Cache
     {
         private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
-        public class Contract { public string name; }
+        private class Contract { public string name; }
 
         // Set here the lifespan of the cache
-        public ContractsCache() : base(new TimeSpan(0, 5, 0)){}
+        public ContractsCache() : base(new TimeSpan(24, 0, 0)){}
 
         public async Task Regenerate()
         {
@@ -29,11 +29,11 @@ namespace proxy_cache_server.Cache
 
         private void UpdateContractsCache()
         {
-            // Retrive all contracts from the json
+            // Retrieve all contracts from the json
             List<Contract> contracts = JsonConvert.DeserializeObject<List<Contract>>(cachedJson);
 
             // Check if there is something to update
-            if (contracts.Count == contractsCache.Count)
+            if (contracts == null || contracts.Count == contractsCache.Count)
                 return;
 
             // Associate the name of the contract to a new empty cache to be filled
@@ -43,9 +43,7 @@ namespace proxy_cache_server.Cache
 
         public StationsCache FindContractCache(string contractName)
         {
-            if (contractsCache.ContainsKey(contractName))
-                return contractsCache[contractName];
-            return null;
+            return contractsCache.ContainsKey(contractName) ? contractsCache[contractName] : null;
         }
     }
 }
