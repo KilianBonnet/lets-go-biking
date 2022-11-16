@@ -35,9 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -51,6 +55,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Helper\locomotion\FootLocomotion.cs" />
+    <Compile Include="Helper\locomotion\ILocomotion.cs" />
+    <Compile Include="Helper\locomotion\LocomotionType.cs" />
     <Compile Include="Helper\OpenRouteProcessing.cs" />
     <Compile Include="Helper\OpenRouteServiceObjects.cs" />
     <Compile Include="IItineraryService.cs" />
@@ -67,6 +74,7 @@
     <None Include="Connected Services\JCDecauxProxy\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

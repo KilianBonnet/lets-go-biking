@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.Device.Location;
+using System.Threading;
 using System.Threading.Tasks;
+using routing_server.Helper;
+using routing_server.Helper.locomotion;
 
 namespace routing_server
 {
     public class ItineraryService : IItineraryService
     {
-        private static readonly OpenRouteClient openRouteClient = OpenRouteClient.Instance;
+        private readonly OpenRouteProcessing openRouteProcessing = OpenRouteProcessing.Instance;
+        
 
         public async Task<string> GetItinerary(string departureAddress, string arrivalAddress)
         {
-            return await openRouteClient.RequestGeocodeSearch(departureAddress);
+            OpenRoutePoint departure = await openRouteProcessing.GetOpenRoutePoint(departureAddress);
+            OpenRoutePoint arrival = await openRouteProcessing.GetOpenRoutePoint(arrivalAddress);
+
+            GeoCoordinate start = openRouteProcessing.GetGeoCoordinate(departure);
+            GeoCoordinate end = openRouteProcessing.GetGeoCoordinate(arrival);
+
+            FootLocomotion footLocomotion = new FootLocomotion(start, end);
+            return "" + footLocomotion.GetDuration();
         }
     }
 }
