@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "proxy-cache-server", "proxy-cache-server\proxy-cache-server.csproj", "{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "routing-server", "routing-server\routing-server.csproj", "{AD4C91FC-02BA-4BD3-9060-44065B46F947}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
