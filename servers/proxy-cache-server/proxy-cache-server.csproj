@@ -52,10 +52,10 @@
   <ItemGroup>
     <Compile Include="Cache\Cache.cs" />
     <Compile Include="Cache\CacheManager.cs" />
-    <Compile Include="Cache\ContractCahe.cs" />
+    <Compile Include="Cache\StationsCache.cs" />
     <Compile Include="Cache\StationCache.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Cache\JCDecauxCache.cs" />
+    <Compile Include="Cache\ContractsCache.cs" />
     <Compile Include="IJCDecauxService.cs" />
     <Compile Include="JCDecauxClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

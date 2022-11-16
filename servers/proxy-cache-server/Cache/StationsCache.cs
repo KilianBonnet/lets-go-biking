@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-class ContractCahe : Cache
+class StationsCache : Cache
 {
     private string contractName;
     private readonly Dictionary<int, StationCache> stationsCache = new Dictionary<int, StationCache>();
     public class Station { public int number; }
 
     // Set here the lifespan of the cache
-    public ContractCahe(string contractName) : base(new TimeSpan(0, 5, 0))
+    public StationsCache(string contractName) : base(new TimeSpan(0, 5, 0))
     {
         this.contractName = contractName;
     }

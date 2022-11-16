@@ -5,7 +5,7 @@ class StationCache : Cache
 {
     private string contractName;
     
-    public StationCache(string contractName) : base(new TimeSpan(0, 5, 0))
+    public StationCache(string contractName) : base(new TimeSpan(0, 0, 10))
     {
         this.contractName = contractName;
     }

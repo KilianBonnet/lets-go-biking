@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-class JCDecauxCache : Cache
+class ContractsCache : Cache
 {
-    private readonly Dictionary<string, ContractCahe> contractsCache = new Dictionary<string, ContractCahe>();
+    private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
     public class Contract { public string name; }
 
     // Set here the lifespan of the cache
-    public JCDecauxCache() : base(new TimeSpan(0, 5, 0)){}
+    public ContractsCache() : base(new TimeSpan(0, 5, 0)){}
 
     public async Task Regenerate()
     {
@@ -36,10 +36,10 @@ class JCDecauxCache : Cache
 
         // Associate the name of the contract to a new empty cache to be filled
         foreach (Contract contract in contracts)
-            contractsCache[contract.name] = new ContractCahe(contract.name);
+            contractsCache[contract.name] = new StationsCache(contract.name);
     }
 
-    public ContractCahe FindContractCache(string contractName)
+    public StationsCache FindContractCache(string contractName)
     {
         if (contractsCache.ContainsKey(contractName))
             return contractsCache[contractName];
