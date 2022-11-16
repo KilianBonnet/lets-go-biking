@@ -16,7 +16,7 @@ namespace proxy_cache_server.Cache
         public async Task Regenerate()
         {
             // Ask JCDecaux servers to send the json containing all contracts
-            string response = await JCDecauxClient.Istance.RequestContractsAsync();
+            string response = await JCDecauxClient.Instance.RequestContractsAsync();
 
             // If the the request leads to an unsuccessful response code
             if (response == null)

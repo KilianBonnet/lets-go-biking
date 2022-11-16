@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using proxy_cache_server.Cache;
 
 namespace proxy_cache_server
