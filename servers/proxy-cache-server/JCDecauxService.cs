@@ -14,11 +14,13 @@ namespace proxy_cache_server
 
         public async Task<string> GetStationsAsync(string contractName)
         {
+            if (contractName == null) contractName = "";
             return await cacheManager.GetStationsAsync(contractName);
         }
 
         public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
         {
+            if (contractName == null) contractName = "";
             return await cacheManager.GetStationInfoAsync(contractName, stationNumber);
         }
     }
