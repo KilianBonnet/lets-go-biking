@@ -21,18 +21,5 @@ namespace proxy_cache_server
         {
             return await cacheManager.GetStationInfoAsync(contractName, stationNumber);
         }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
     }
 }
