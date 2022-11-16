@@ -51,6 +51,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Helper\OpenRouteProcessing.cs" />
+    <Compile Include="Helper\OpenRouteServiceObjects.cs" />
     <Compile Include="IItineraryService.cs" />
     <Compile Include="OpenRouteClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

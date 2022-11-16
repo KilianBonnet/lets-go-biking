@@ -1,20 +1,24 @@
 ﻿using System;
 
-class Cache
+namespace proxy_cache_server.Cache
 {
-    public TimeSpan lifeSpan;
-    public DateTime lastUpdate;
-    public string cachedJson;
-
-    public Cache(TimeSpan lifeSpan)
+    internal class Cache
     {
-        this.lifeSpan = lifeSpan;
-        lastUpdate = DateTime.MinValue;
-        cachedJson = "{\"Error\":\"Bad Request\"}";
+        private readonly TimeSpan lifeSpan;
+        protected DateTime lastUpdate;
+        public string cachedJson;
+
+        protected Cache(TimeSpan lifeSpan)
+        {
+            this.lifeSpan = lifeSpan;
+            lastUpdate = DateTime.MinValue;
+            cachedJson = "{\"Error\":\"Bad Request\"}";
+        }
+
+        public bool IsOutdated()
+        {
+            return DateTime.Now - lastUpdate > lifeSpan;
+        }
     }
 
-    public bool IsOutdated()
-    {
-        return DateTime.Now - lastUpdate > lifeSpan;
-    }
 }

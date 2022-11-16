@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using proxy_cache_server.Cache;
 
 namespace proxy_cache_server
 {
     public class JCDecauxService : IJCDecauxService
     {
-        private readonly CacheManager cacheManager = CacheManager.Instance;
+        private static readonly CacheManager cacheManager = CacheManager.Instance;
 
         public async Task<string> GetContractsAsync()
         {

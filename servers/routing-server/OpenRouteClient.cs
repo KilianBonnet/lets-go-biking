@@ -5,27 +5,30 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
 
-class OpenRouteClient
-{
-    // Singleton design pattern
-    public static OpenRouteClient Istance = new OpenRouteClient();
 
-    // Client configuration
-    private readonly HttpClient client = new HttpClient();
-    private const string BASE_URL = "https://api.openrouteservice.org/v2/directions/cycling-road";
-
-    private OpenRouteClient(){}
-
-    public async Task<string> RequestDirectionsAsync()
+namespace routing_server { 
+    internal class OpenRouteClient
     {
-        // Generating the necessary DefaultRequestHeaders
-        client.DefaultRequestHeaders.Clear();
-        client.DefaultRequestHeaders.TryAddWithoutValidation("accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8");
-        client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "your-api-key");
+        // Singleton design pattern
+        public static readonly OpenRouteClient Instance = new OpenRouteClient();
 
-        return null;
+        // Client configuration
+        private readonly HttpClient client = new HttpClient();
+        private const string BASE_URL = "https://api.openrouteservice.org/v2/directions/cycling-road";
+
+        private OpenRouteClient(){}
+
+        public async Task<string> RequestGeocodeSearch(string address)
+        {
+            Uri requestedURL = new Uri(
+                "https://api.openrouteservice.org/geocode/search?api_key="
+                + Config.OPEN_ROUTE_SERVICE_API_KEY
+                + "&text=" + address);
+            HttpResponseMessage response = await client.GetAsync(requestedURL);
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 }
-

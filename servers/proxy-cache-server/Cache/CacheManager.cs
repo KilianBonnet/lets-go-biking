@@ -1,71 +1,71 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Threading.Tasks;
 
-class CacheManager
+namespace proxy_cache_server.Cache
 {
-    // Singleton design pattern
-    public static CacheManager Instance = new CacheManager();
-    private ContractsCache contractsCache = new ContractsCache();
-
-    public async Task<string> GetContractsAsync()
+    internal class CacheManager
     {
-        // Check if the contractsCache is outdated. If so, regenerate it.
-        if (contractsCache.IsOutdated())
-            await contractsCache.Regenerate();
+        // Singleton design pattern
+        public static CacheManager Instance = new CacheManager();
+        private ContractsCache contractsCache = new ContractsCache();
 
-        return contractsCache.cachedJson;
-    }
+        public async Task<string> GetContractsAsync()
+        {
+            // Check if the contractsCache is outdated. If so, regenerate it.
+            if (contractsCache.IsOutdated())
+                await contractsCache.Regenerate();
 
-    public async Task<string> GetStationsAsync(string contractName)
-    {
-        // Check if the contractsCache is outdated. If so, regenerate it.
-        if (contractsCache.IsOutdated())
-            await contractsCache.Regenerate();
+            return contractsCache.cachedJson;
+        }
 
-        // Find the stationsCache in the contractsCache
-        StationsCache stationsCache = contractsCache.FindContractCache(contractName);
+        public async Task<string> GetStationsAsync(string contractName)
+        {
+            // Check if the contractsCache is outdated. If so, regenerate it.
+            if (contractsCache.IsOutdated())
+                await contractsCache.Regenerate();
 
-        // If the stationsCache is not found. This is a bad request
-        if (stationsCache == null)
-            return "{\"Error\":\"Bad Request\"}";
+            // Find the stationsCache in the contractsCache
+            StationsCache stationsCache = contractsCache.FindContractCache(contractName);
 
-        // Check if the stationsCache is outdated. If so, regenerate it.
-        if (stationsCache.IsOutdated())
-            await stationsCache.Regenerate();
+            // If the stationsCache is not found. This is a bad request
+            if (stationsCache == null)
+                return "{\"Error\":\"Bad Request\"}";
 
-        return stationsCache.cachedJson;
-    }
+            // Check if the stationsCache is outdated. If so, regenerate it.
+            if (stationsCache.IsOutdated())
+                await stationsCache.Regenerate();
 
-    public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
-    {
-        // Check if the contractsCache is outdated. If so, regenerate it.
-        if (contractsCache.IsOutdated())
-            await contractsCache.Regenerate();
+            return stationsCache.cachedJson;
+        }
 
-        // Find the stationsCache in the contractsCache
-        StationsCache stationsCache = contractsCache.FindContractCache(contractName);
+        public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
+        {
+            // Check if the contractsCache is outdated. If so, regenerate it.
+            if (contractsCache.IsOutdated())
+                await contractsCache.Regenerate();
 
-        // If the stationsCache is not found. This is a bad request
-        if (stationsCache == null)
-            return "{\"Error\":\"Bad Request\"}";
+            // Find the stationsCache in the contractsCache
+            StationsCache stationsCache = contractsCache.FindContractCache(contractName);
 
-        // Check if the stationsCache is outdated. If so, regenerate it.
-        if (stationsCache.IsOutdated())
-            await stationsCache.Regenerate();
+            // If the stationsCache is not found. This is a bad request
+            if (stationsCache == null)
+                return "{\"Error\":\"Bad Request\"}";
 
-        // Find the stationCache in the ContractCache
-        StationCache stationCache = stationsCache.FindStationCache(stationNumber);
+            // Check if the stationsCache is outdated. If so, regenerate it.
+            if (stationsCache.IsOutdated())
+                await stationsCache.Regenerate();
 
-        // If the stationCache is not found. This is a bad request
-        if (stationCache == null)
-            return "{\"Error\":\"Bad Request\"}";
+            // Find the stationCache in the ContractCache
+            StationCache stationCache = stationsCache.FindStationCache(stationNumber);
 
-        // Check if the stationCache is outdated. If so, regenerate it.
-        if (stationCache.IsOutdated())
-            await stationCache.Regenerate();
+            // If the stationCache is not found. This is a bad request
+            if (stationCache == null)
+                return "{\"Error\":\"Bad Request\"}";
 
-        return stationCache.cachedJson;
+            // Check if the stationCache is outdated. If so, regenerate it.
+            if (stationCache.IsOutdated())
+                await stationCache.Regenerate();
+
+            return stationCache.cachedJson;
+        }
     }
 }
-

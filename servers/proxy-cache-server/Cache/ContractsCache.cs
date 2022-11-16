@@ -3,46 +3,49 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-class ContractsCache : Cache
+namespace proxy_cache_server.Cache
 {
-    private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
-    public class Contract { public string name; }
-
-    // Set here the lifespan of the cache
-    public ContractsCache() : base(new TimeSpan(0, 5, 0)){}
-
-    public async Task Regenerate()
+    internal class ContractsCache : Cache
     {
-        // Ask JCDecaux servers to send the json containing all contracts
-        string response = await JCDecauxClient.Istance.RequestContractsAsync();
+        private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
+        public class Contract { public string name; }
 
-        // If the the request leads to an unsuccessful response code
-        if (response == null)
-            return;
+        // Set here the lifespan of the cache
+        public ContractsCache() : base(new TimeSpan(0, 5, 0)){}
 
-        lastUpdate = DateTime.Now;
-        cachedJson = response;
-        UpdateContractsCache();
-    }
+        public async Task Regenerate()
+        {
+            // Ask JCDecaux servers to send the json containing all contracts
+            string response = await JCDecauxClient.Istance.RequestContractsAsync();
 
-    private void UpdateContractsCache()
-    {
-        // Retrive all contracts from the json
-        List<Contract> contracts = JsonConvert.DeserializeObject<List<Contract>>(cachedJson);
+            // If the the request leads to an unsuccessful response code
+            if (response == null)
+                return;
 
-        // Check if there is something to update
-        if (contracts.Count == contractsCache.Count)
-            return;
+            lastUpdate = DateTime.Now;
+            cachedJson = response;
+            UpdateContractsCache();
+        }
 
-        // Associate the name of the contract to a new empty cache to be filled
-        foreach (Contract contract in contracts)
-            contractsCache[contract.name] = new StationsCache(contract.name);
-    }
+        private void UpdateContractsCache()
+        {
+            // Retrive all contracts from the json
+            List<Contract> contracts = JsonConvert.DeserializeObject<List<Contract>>(cachedJson);
 
-    public StationsCache FindContractCache(string contractName)
-    {
-        if (contractsCache.ContainsKey(contractName))
-            return contractsCache[contractName];
-        return null;
+            // Check if there is something to update
+            if (contracts.Count == contractsCache.Count)
+                return;
+
+            // Associate the name of the contract to a new empty cache to be filled
+            foreach (Contract contract in contracts)
+                contractsCache[contract.name] = new StationsCache(contract.name);
+        }
+
+        public StationsCache FindContractCache(string contractName)
+        {
+            if (contractsCache.ContainsKey(contractName))
+                return contractsCache[contractName];
+            return null;
+        }
     }
 }
