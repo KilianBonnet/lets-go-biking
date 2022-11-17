@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace routing_server.Helper
+namespace routing_server.Helper.open_route_objects
 {
-    public class Feature
+    public class PointFeature
     {
         public Geometry geometry { get; set; }
         public Properties properties { get; set; }
@@ -36,17 +36,12 @@ namespace routing_server.Helper
         public string label { get; set; }
     }
 
-    public class OpenRoutePoint
-    {
-        public List<Feature> features { get; set; }
-    }
-
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 
     public class DirectionsFeature
     {
-        [JsonProperty("properties")] public DirectionsProperties properties { get; set; }
-        [JsonProperty("geometry")] public DirectionsGeometry geometry { get; set; }
+        [JsonProperty(PropertyName="properties")] public DirectionsProperties properties { get; set; }
+        [JsonProperty(PropertyName="geometry")] public DirectionsGeometry geometry { get; set; }
     }
 
     public class DirectionsGeometry
@@ -61,15 +56,10 @@ namespace routing_server.Helper
         public List<int> way_points { get; set; }
     }
 
-    public class OpenRouteDirections
-    {
-        [JsonProperty("features")] public List<DirectionsFeature> features { get; set; }
-    }
-
     public class Segment
     {
         public double distance { get; set; }
-        public int duration { get; set; }
+        public double duration { get; set; }
         public List<Step> steps { get; set; }
     }
 
@@ -86,7 +76,7 @@ namespace routing_server.Helper
     public class Summary
     {
         public double distance { get; set; }
-        public int duration { get; set; }
+        public double duration { get; set; }
     }
 }
 

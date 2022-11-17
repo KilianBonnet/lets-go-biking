@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Device.Location;
+﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using routing_server.Helper.open_route_objects;
 
 namespace routing_server.Helper
 {
     internal class OpenRouteProcessing
     {
+        private class AddressNotFoundException : Exception { }
         private readonly OpenRouteClient openRouteClient = OpenRouteClient.Instance;
         
         // Singleton design pattern
@@ -17,12 +18,6 @@ namespace routing_server.Helper
         {
             string json = await openRouteClient.RequestGeocodeSearch(address);
             return JsonConvert.DeserializeObject<OpenRoutePoint>(json);
-        }
-
-        public GeoCoordinate GetGeoCoordinate(OpenRoutePoint openRoutePoint)
-        {
-            List<double> coordinates = openRoutePoint.features[0].geometry.coordinates;
-            return new GeoCoordinate(coordinates[1], coordinates[0]);
         }
     }
 }

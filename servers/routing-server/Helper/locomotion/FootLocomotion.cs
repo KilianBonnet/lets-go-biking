@@ -1,6 +1,6 @@
 ﻿using System.Device.Location;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using routing_server.Helper.open_route_objects;
 
 namespace routing_server.Helper.locomotion
 {
@@ -8,7 +8,6 @@ namespace routing_server.Helper.locomotion
     {
         private readonly OpenRouteClient openRouteClient = OpenRouteClient.Instance;
         private readonly OpenRouteDirections directions;
-        
 
         public FootLocomotion(GeoCoordinate departure, GeoCoordinate arrival)
         {
@@ -16,7 +15,7 @@ namespace routing_server.Helper.locomotion
             directions = JsonConvert.DeserializeObject<OpenRouteDirections>(directionsJson);
         }
 
-        public int GetDuration()
+        public double GetDuration()
         {
             return directions.features[0].properties.summary.duration;
         }

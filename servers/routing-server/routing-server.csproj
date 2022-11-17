@@ -45,6 +45,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.Json">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\PublicAssemblies\System.Text.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -58,8 +61,10 @@
     <Compile Include="Helper\locomotion\FootLocomotion.cs" />
     <Compile Include="Helper\locomotion\ILocomotion.cs" />
     <Compile Include="Helper\locomotion\LocomotionType.cs" />
+    <Compile Include="Helper\open-route-objects\OpenRouteDirections.cs" />
+    <Compile Include="Helper\open-route-objects\OpenRoutePoint.cs" />
+    <Compile Include="Helper\open-route-objects\OpenRouteSubObjects.cs" />
     <Compile Include="Helper\OpenRouteProcessing.cs" />
-    <Compile Include="Helper\OpenRouteServiceObjects.cs" />
     <Compile Include="IItineraryService.cs" />
     <Compile Include="OpenRouteClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

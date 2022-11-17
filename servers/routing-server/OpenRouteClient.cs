@@ -10,8 +10,7 @@ namespace routing_server {
     {
         // Client configuration
         private readonly HttpClient client = new HttpClient();
-        private const string BASE_URL = "https://api.openrouteservice.org/v2/directions/cycling-road";
-        
+
         // Singleton design pattern
         public static readonly OpenRouteClient Instance = new OpenRouteClient();
         private OpenRouteClient(){}
@@ -32,8 +31,8 @@ namespace routing_server {
                 "https://api.openrouteservice.org/v2/directions/"
                 + locomotionType
                 + "?api_key=" + Config.OPEN_ROUTE_SERVICE_API_KEY
-                + "&start=" + departure.Latitude + "," + departure.Longitude
-                + "&end=" + arrival.Latitude + "," + arrival.Longitude
+                + "&start=" + departure.Longitude + "," + departure.Latitude
+                + "&end=" + arrival.Longitude + "," + arrival.Latitude
                 );
             HttpResponseMessage response = await client.GetAsync(requestedURL);
             return await response.Content.ReadAsStringAsync();
