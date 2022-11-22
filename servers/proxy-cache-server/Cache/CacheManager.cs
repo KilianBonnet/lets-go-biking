@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using class_library;
 
 namespace proxy_cache_server.Cache
 {
@@ -10,16 +12,16 @@ namespace proxy_cache_server.Cache
         public static readonly CacheManager Instance = new CacheManager();
         private CacheManager() {}
 
-        public async Task<string> GetContractsAsync()
+        public async Task<List<Contract>> GetContractsAsync()
         {
             // Check if the contractsCache is outdated. If so, regenerate it.
             if (contractsCache.IsOutdated())
                 await contractsCache.Regenerate();
 
-            return contractsCache.cachedJson;
+            return contractsCache.content;
         }
 
-        public async Task<string> GetStationsAsync(string contractName)
+        public async Task<List<Station>> GetStationsAsync(string contractName)
         {
             // Check if the contractsCache is outdated. If so, regenerate it.
             if (contractsCache.IsOutdated())
@@ -30,16 +32,16 @@ namespace proxy_cache_server.Cache
 
             // If the stationsCache is not found. This is a bad request
             if (stationsCache == null)
-                return "{\"Error\":\"Bad Request\"}";
+                throw new ContractNotFoundException();
 
             // Check if the stationsCache is outdated. If so, regenerate it.
             if (stationsCache.IsOutdated())
                 await stationsCache.Regenerate();
 
-            return stationsCache.cachedJson;
+            return stationsCache.content;
         }
 
-        public async Task<string> GetStationInfoAsync(string contractName, int stationNumber)
+        public async Task<StationInformation> GetStationInfoAsync(string contractName, int stationNumber)
         {
             // Check if the contractsCache is outdated. If so, regenerate it.
             if (contractsCache.IsOutdated())
@@ -50,7 +52,7 @@ namespace proxy_cache_server.Cache
 
             // If the stationsCache is not found. This is a bad request
             if (stationsCache == null)
-                return "{\"Error\":\"Bad Request\"}";
+                throw new ContractNotFoundException();
 
             // Check if the stationsCache is outdated. If so, regenerate it.
             if (stationsCache.IsOutdated())
@@ -61,13 +63,13 @@ namespace proxy_cache_server.Cache
 
             // If the stationCache is not found. This is a bad request
             if (stationCache == null)
-                return "{\"Error\":\"Bad Request\"}";
+                throw new StationNotFoundException();
 
             // Check if the stationCache is outdated. If so, regenerate it.
             if (stationCache.IsOutdated())
                 await stationCache.Regenerate();
 
-            return stationCache.cachedJson;
+            return stationCache.content;
         }
     }
 }

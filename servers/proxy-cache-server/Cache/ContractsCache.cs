@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using class_library;
 using Newtonsoft.Json;
 
 namespace proxy_cache_server.Cache
 {
     internal class ContractsCache : Cache
     {
+        public List<Contract> content;
         private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
-        private class Contract { public string name; }
 
         // Set here the lifespan of the cache
         public ContractsCache() : base(new TimeSpan(24, 0, 0)){}
@@ -23,21 +24,19 @@ namespace proxy_cache_server.Cache
                 return;
 
             lastUpdate = DateTime.Now;
-            cachedJson = response;
+            content = JsonConvert.DeserializeObject<List<Contract>>(response);
             UpdateContractsCache();
         }
 
         private void UpdateContractsCache()
         {
-            // Retrieve all contracts from the json
-            List<Contract> contracts = JsonConvert.DeserializeObject<List<Contract>>(cachedJson);
-
             // Check if there is something to update
-            if (contracts == null || contracts.Count == contractsCache.Count)
+            if (content == null || content.Count == contractsCache.Count)
                 return;
 
+            contractsCache.Clear();
             // Associate the name of the contract to a new empty cache to be filled
-            foreach (Contract contract in contracts)
+            foreach (Contract contract in content)
                 contractsCache[contract.name] = new StationsCache(contract.name);
         }
 

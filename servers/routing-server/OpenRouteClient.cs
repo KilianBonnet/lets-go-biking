@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using routing_server.Helper.locomotion;
 
 
-namespace routing_server { 
-    internal class OpenRouteClient
+namespace routing_server {
+    public class OpenRouteClient
     {
         // Client configuration
         private readonly HttpClient client = new HttpClient();

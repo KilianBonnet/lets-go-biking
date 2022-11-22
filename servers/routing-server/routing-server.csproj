@@ -53,18 +53,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="Connected Services\JCDecauxProxy\Reference.cs">
+    <Compile Include="Connected Services\JCDecauxService\JCDecauxService.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
+      <DependentUpon>JCDecauxService.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Exceptions.cs" />
+    <Compile Include="Helper\locomotion\BikeLocomotion.cs" />
     <Compile Include="Helper\locomotion\FootLocomotion.cs" />
-    <Compile Include="Helper\locomotion\ILocomotion.cs" />
+    <Compile Include="Helper\locomotion\Locomotion.cs" />
     <Compile Include="Helper\locomotion\LocomotionType.cs" />
     <Compile Include="Helper\open-route-objects\OpenRouteDirections.cs" />
     <Compile Include="Helper\open-route-objects\OpenRoutePoint.cs" />
     <Compile Include="Helper\open-route-objects\OpenRouteSubObjects.cs" />
-    <Compile Include="Helper\OpenRouteProcessing.cs" />
+    <Compile Include="Helper\ApiProcessing.cs" />
     <Compile Include="IItineraryService.cs" />
     <Compile Include="OpenRouteClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,32 +74,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\JCDecauxProxy\service.wsdl" />
-    <None Include="Connected Services\JCDecauxProxy\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\JCDecauxProxy\service1.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Connected Services\JCDecauxService\JCDecauxService.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>JCDecauxService.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Folder Include="Helper\jcdecaux-objects" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\JCDecauxProxy\" />
+    <ProjectReference Include="..\class-library\class-library.csproj">
+      <Project>{b634d3a3-3565-4ac7-8604-fb2a37c2d3ca}</Project>
+      <Name>class-library</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JCDecauxProxy\configuration91.svcinfo" />
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\JCDecauxProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\JCDecauxProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Connected Services\JCDecauxService" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

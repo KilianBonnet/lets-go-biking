@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "routing-server", "routing-s
 		{9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE} = {9E77AEDA-5D2B-4EEA-92FC-9F7168E3A1FE}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "class-library", "class-library\class-library.csproj", "{B634D3A3-3565-4AC7-8604-FB2A37C2D3CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD4C91FC-02BA-4BD3-9060-44065B46F947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B634D3A3-3565-4AC7-8604-FB2A37C2D3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B634D3A3-3565-4AC7-8604-FB2A37C2D3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B634D3A3-3565-4AC7-8604-FB2A37C2D3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B634D3A3-3565-4AC7-8604-FB2A37C2D3CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

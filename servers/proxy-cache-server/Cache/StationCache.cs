@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using class_library;
+using Newtonsoft.Json;
 
 namespace proxy_cache_server.Cache
 {
     internal class StationCache : Cache
     {
+        public StationInformation content;
         private readonly string contractName;
     
         public StationCache(string contractName) : base(new TimeSpan(0, 1, 0))
@@ -22,7 +26,7 @@ namespace proxy_cache_server.Cache
                 return;
 
             lastUpdate = DateTime.Now;
-            cachedJson = response;
+            content = JsonConvert.DeserializeObject<StationInformation>(response);
         }
     }
 }
