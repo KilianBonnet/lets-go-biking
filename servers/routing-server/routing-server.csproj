@@ -84,12 +84,6 @@
     <Folder Include="Helper\jcdecaux-objects" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\class-library\class-library.csproj">
-      <Project>{b634d3a3-3565-4ac7-8604-fb2a37c2d3ca}</Project>
-      <Name>class-library</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
   <ItemGroup>

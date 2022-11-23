@@ -59,18 +59,13 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="IJCDecauxService.cs" />
     <Compile Include="JCDecauxClient.cs" />
+    <Compile Include="JCDecauxObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JCDecauxService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\class-library\class-library.csproj">
-      <Project>{b634d3a3-3565-4ac7-8604-fb2a37c2d3ca}</Project>
-      <Name>class-library</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

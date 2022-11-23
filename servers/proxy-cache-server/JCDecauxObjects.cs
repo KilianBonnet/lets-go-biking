@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace class_library
+namespace proxy_cache_server
 {
     public class Contract
     {

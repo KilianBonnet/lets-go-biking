@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using class_library;
 using proxy_cache_server.Cache;
 
 namespace proxy_cache_server
