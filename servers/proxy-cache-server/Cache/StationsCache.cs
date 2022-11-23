@@ -5,9 +5,11 @@ using Newtonsoft.Json;
 
 namespace proxy_cache_server.Cache
 {
-    internal class StationsCache : Cache
+    internal class StationsCache : GenericProxyCache
     {
         private readonly string contractName;
+        
+        // The GetContracts(stationName) Json converted to a List<Station>
         public List<Station> content;
         private readonly Dictionary<int, StationCache> stationsCache = new Dictionary<int, StationCache>();
 
@@ -33,7 +35,7 @@ namespace proxy_cache_server.Cache
 
         private void UpdateStationsCache()
         {
-            // Check if there is something to update
+            // Check if a new station has been found
             if (content == null || content.Count == stationsCache.Count)
                 return;
 
@@ -41,7 +43,7 @@ namespace proxy_cache_server.Cache
             
             // Associate the name of the station to a new empty cache to be filled
             foreach (Station station in content)
-                stationsCache[station.number] = new StationCache(contractName);
+                stationsCache[station.number] = new StationCache(contractName, station.number);
         }
 
         public StationCache FindStationCache(int stationNumber)

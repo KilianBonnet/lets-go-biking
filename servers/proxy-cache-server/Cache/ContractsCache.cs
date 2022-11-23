@@ -5,9 +5,11 @@ using Newtonsoft.Json;
 
 namespace proxy_cache_server.Cache
 {
-    internal class ContractsCache : Cache
+    internal class ContractsCache : GenericProxyCache
     {
+        // The GetContracts Json converted to a List<Contract>
         public List<Contract> content;
+        // The association of a stationName and its Stations
         private readonly Dictionary<string, StationsCache> contractsCache = new Dictionary<string, StationsCache>();
 
         // Set here the lifespan of the cache
@@ -29,11 +31,12 @@ namespace proxy_cache_server.Cache
 
         private void UpdateContractsCache()
         {
-            // Check if there is something to update
+            // Check if a new contract has been found
             if (content == null || content.Count == contractsCache.Count)
                 return;
 
             contractsCache.Clear();
+            
             // Associate the name of the contract to a new empty cache to be filled
             foreach (Contract contract in content)
                 contractsCache[contract.name] = new StationsCache(contract.name);

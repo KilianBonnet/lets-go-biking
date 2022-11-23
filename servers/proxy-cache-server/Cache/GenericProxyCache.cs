@@ -2,12 +2,12 @@
 
 namespace proxy_cache_server.Cache
 {
-    internal class Cache
+    internal class GenericProxyCache
     {
         private readonly TimeSpan lifeSpan;
         protected DateTime lastUpdate;
 
-        protected Cache(TimeSpan lifeSpan)
+        protected GenericProxyCache(TimeSpan lifeSpan)
         {
             this.lifeSpan = lifeSpan;
             lastUpdate = DateTime.MinValue;
