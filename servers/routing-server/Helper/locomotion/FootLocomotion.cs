@@ -1,5 +1,4 @@
-﻿using System;
-using System.Device.Location;
+﻿using System.Device.Location;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using routing_server.Helper.open_route_objects;
