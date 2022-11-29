@@ -77,6 +77,12 @@ namespace routing_server.Helper.open_route_objects
     {
         public double distance { get; set; }
         public double duration { get; set; }
+    }    
+    
+    public class OpenRouteDirections
+    {
+        [JsonProperty(PropertyName="features")] 
+        public List<DirectionsFeature> features { get; set; }
     }
 }
 

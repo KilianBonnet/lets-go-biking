@@ -6,38 +6,32 @@ using routing_server.Helper.open_route_objects;
 
 namespace routing_server.Helper.locomotion
 {
-    public class FootLocomotion : Locomotion
+    public class FootLocomotion
     {
-        public FootLocomotion(OpenRoutePoint departure, OpenRoutePoint arrival) : base(departure, arrival) {}
-
-        public override async Task<DirectionsProperties> GetProperties()
+        private readonly OpenRouteClient openRouteClient = OpenRouteClient.Instance;
+        private readonly GeoCoordinate departure;
+        private readonly GeoCoordinate arrival;
+        
+        public FootLocomotion(GeoCoordinate departure, GeoCoordinate arrival)
         {
-            await QueryInformation(); // Query from OpenRouteService the directions from departure to arrival
-
-            if (directions == null)
-                throw new BadDirectionRequestException();
-
-            if (directions.features.Count == 0)
-                throw new DirectionsNotFoundException();
-            
-            return directions.features[0].properties;
+            this.departure = departure;
+            this.arrival = arrival;
         }
 
-        public override async Task<double> GetDuration()
+        public async Task<LgbDirections> GetDirections()
         {
-            return (await GetProperties()).summary.duration;
+            OpenRouteDirections directions = await QueryDirections(); // Query from OpenRouteService the directions from departure to arrival
+            if (directions == null) throw new BadDirectionRequestException();
+            if (directions.features.Count == 0) throw new DirectionsNotFoundException();
+            return LgbDirectionBuilder.BuildLgbDirection(directions, LocomotionType.FOOT);
         }
-
-        private async Task QueryInformation()
+        
+        private async Task<OpenRouteDirections> QueryDirections()
         {
-            // Check if the query is already done
-            if (directions != null)
-                return;
-
             // Query directions information through openRouteClient
             string directionsJson = await openRouteClient
-                .RequestDirections(departure.ToGeoCoordinate(), arrival.ToGeoCoordinate(), LocomotionType.FOOT);
-            directions = JsonConvert.DeserializeObject<OpenRouteDirections>(directionsJson);
+                .RequestDirections(departure, arrival, LocomotionType.FOOT);
+            return JsonConvert.DeserializeObject<OpenRouteDirections>(directionsJson);
         }
     }
 }

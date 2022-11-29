@@ -7,21 +7,21 @@ namespace routing_server
 {
     public class ItineraryService : IItineraryService
     {
-        private readonly ApiProcessing _apiProcessing = ApiProcessing.Instance;
+        private readonly ApiProcessing apiProcessing = ApiProcessing.Instance;
         
 
-        public async Task<string> GetItinerary(string departureAddress, string arrivalAddress)
+        public async Task<LgbDirections> GetItinerary(string departureAddress, string arrivalAddress)
         {
             if (departureAddress == null || arrivalAddress == null) return null;
-            
-            OpenRoutePoint departure = await _apiProcessing.GetOpenRoutePoint(departureAddress);
-            OpenRoutePoint arrival = await _apiProcessing.GetOpenRoutePoint(arrivalAddress);
 
-            if (departure == null || arrival == null) return null;
+            OpenRoutePoint departurePoint = await apiProcessing.GetOpenRoutePoint(departureAddress);
+            OpenRoutePoint arrivalPoint = await apiProcessing.GetOpenRoutePoint(arrivalAddress);
+
+            LgbDirections bikeLocomotionDirections = await new BikeLocomotion(departurePoint, arrivalPoint).GetDirections();
+            LgbDirections footLocomotionDirections = await new FootLocomotion(departurePoint.ToGeoCoordinate(), arrivalPoint.ToGeoCoordinate()).GetDirections();
             
-            FootLocomotion footLocomotion = new FootLocomotion(departure, arrival);
-            
-            return "" + footLocomotion.GetProperties().Result.summary.duration;
+            return bikeLocomotionDirections.TotalDuration < footLocomotionDirections.TotalDuration
+                ? bikeLocomotionDirections : footLocomotionDirections;
         }
     }
 }

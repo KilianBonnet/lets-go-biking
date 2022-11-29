@@ -61,9 +61,8 @@
     <Compile Include="Helper\Exceptions.cs" />
     <Compile Include="Helper\locomotion\BikeLocomotion.cs" />
     <Compile Include="Helper\locomotion\FootLocomotion.cs" />
-    <Compile Include="Helper\locomotion\Locomotion.cs" />
     <Compile Include="Helper\locomotion\LocomotionType.cs" />
-    <Compile Include="Helper\open-route-objects\OpenRouteDirections.cs" />
+    <Compile Include="Helper\open-route-objects\LgbDirections.cs" />
     <Compile Include="Helper\open-route-objects\OpenRoutePoint.cs" />
     <Compile Include="Helper\open-route-objects\OpenRouteSubObjects.cs" />
     <Compile Include="Helper\ApiProcessing.cs" />
@@ -79,9 +78,6 @@
       <LastGenOutput>JCDecauxService.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\jcdecaux-objects" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />

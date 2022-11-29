@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using routing_server.Helper.open_route_objects;
 
 namespace routing_server
 {
@@ -12,6 +13,6 @@ namespace routing_server
     public interface IItineraryService
     {
         [OperationContract]
-        Task<string> GetItinerary(string departureAddress, string arrivalAddress);
+        Task<LgbDirections> GetItinerary(string departureAddress, string arrivalAddress);
     }
 }

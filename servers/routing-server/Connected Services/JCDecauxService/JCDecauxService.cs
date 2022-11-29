@@ -14,7 +14,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/class_library")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
     public partial class Contract : object
     {
         
@@ -81,39 +81,19 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Station", Namespace="http://schemas.datacontract.org/2004/07/class_library")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(routing_server.JCDecauxService.Contract[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(routing_server.JCDecauxService.Contract))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(routing_server.JCDecauxService.Station[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(routing_server.JCDecauxService.Position))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(routing_server.JCDecauxService.StationInformation))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Station", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
     public partial class Station : object
     {
         
         private string addressField;
         
-        private int available_bike_standsField;
-        
-        private int available_bikesField;
-        
-        private bool bankingField;
-        
-        private int bike_standsField;
-        
-        private bool bonusField;
-        
         private string contract_nameField;
-        
-        private object last_updateField;
         
         private string nameField;
         
         private int numberField;
         
         private routing_server.JCDecauxService.Position positionField;
-        
-        private string statusField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string address
@@ -129,71 +109,6 @@ namespace routing_server.JCDecauxService
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int available_bike_stands
-        {
-            get
-            {
-                return this.available_bike_standsField;
-            }
-            set
-            {
-                this.available_bike_standsField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int available_bikes
-        {
-            get
-            {
-                return this.available_bikesField;
-            }
-            set
-            {
-                this.available_bikesField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool banking
-        {
-            get
-            {
-                return this.bankingField;
-            }
-            set
-            {
-                this.bankingField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int bike_stands
-        {
-            get
-            {
-                return this.bike_standsField;
-            }
-            set
-            {
-                this.bike_standsField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool bonus
-        {
-            get
-            {
-                return this.bonusField;
-            }
-            set
-            {
-                this.bonusField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string contract_name
         {
             get
@@ -203,19 +118,6 @@ namespace routing_server.JCDecauxService
             set
             {
                 this.contract_nameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public object last_update
-        {
-            get
-            {
-                return this.last_updateField;
-            }
-            set
-            {
-                this.last_updateField = value;
             }
         }
         
@@ -257,24 +159,11 @@ namespace routing_server.JCDecauxService
                 this.positionField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string status
-        {
-            get
-            {
-                return this.statusField;
-            }
-            set
-            {
-                this.statusField = value;
-            }
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/class_library")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
     public partial class Position : object
     {
         
@@ -311,7 +200,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StationInformation", Namespace="http://schemas.datacontract.org/2004/07/class_library")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StationInformation", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
     public partial class StationInformation : object
     {
         

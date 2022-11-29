@@ -29,4 +29,18 @@ namespace routing_server.Helper
         public MultipleMatchingAddressException() { }
         public MultipleMatchingAddressException(string message) : base(message) { }
     }
+    
+    [Serializable]
+    public class CityNotCoveredException : Exception
+    {
+        public CityNotCoveredException() { }
+        public CityNotCoveredException(string message) : base(message) { }
+    }
+    
+    [Serializable]
+    public class DifferentContractCoverageException : Exception
+    {
+        public DifferentContractCoverageException() { }
+        public DifferentContractCoverageException(string message) : base(message) { }
+    }
 }
