@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
+using proxy_cache_server.Implementation;
 
-namespace proxy_cache_server
+namespace proxy_cache_server.Interface
 {
     [ServiceContract]
     public interface IJCDecauxService

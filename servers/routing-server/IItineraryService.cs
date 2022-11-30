@@ -14,5 +14,8 @@ namespace routing_server
     {
         [OperationContract]
         Task<LgbDirections> GetItinerary(string departureAddress, string arrivalAddress);
+
+        [OperationContract]
+        string Debug();
     }
 }

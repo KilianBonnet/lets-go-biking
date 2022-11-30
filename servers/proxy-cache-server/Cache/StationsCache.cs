@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using proxy_cache_server.Implementation;
 
 namespace proxy_cache_server.Cache
 {

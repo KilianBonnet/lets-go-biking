@@ -2,6 +2,7 @@
 using routing_server.Helper;
 using routing_server.Helper.locomotion;
 using routing_server.Helper.open_route_objects;
+using routing_server.JCDecauxService;
 
 namespace routing_server
 {
@@ -22,6 +23,12 @@ namespace routing_server
             
             return bikeLocomotionDirections.TotalDuration < footLocomotionDirections.TotalDuration
                 ? bikeLocomotionDirections : footLocomotionDirections;
+        }
+
+        public string Debug()
+        {
+            IJCDecauxService jcDecauxService = new JCDecauxServiceClient();
+            return jcDecauxService.GetContractsAsync().Result[0].name;
         }
     }
 }

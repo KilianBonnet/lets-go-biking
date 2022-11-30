@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace proxy_cache_server
+namespace proxy_cache_server.Implementation
 {
     internal class JCDecauxClient
     {

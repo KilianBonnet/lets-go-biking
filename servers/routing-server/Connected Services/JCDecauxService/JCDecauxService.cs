@@ -14,7 +14,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
     public partial class Contract : object
     {
         
@@ -81,7 +81,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Station", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Station", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
     public partial class Station : object
     {
         
@@ -163,7 +163,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
     public partial class Position : object
     {
         
@@ -200,7 +200,7 @@ namespace routing_server.JCDecauxService
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StationInformation", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StationInformation", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
     public partial class StationInformation : object
     {
         

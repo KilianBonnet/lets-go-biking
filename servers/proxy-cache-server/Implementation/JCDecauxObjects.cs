@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace proxy_cache_server
+namespace proxy_cache_server.Implementation
 {
     public class Contract
     {
