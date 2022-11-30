@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="GetItineraryResult" type="{http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects}LgbDirections" minOccurs="0"/&gt;
+ *         &lt;element name="DebugResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getItineraryResult"
+    "debugResult"
 })
-@XmlRootElement(name = "GetItineraryResponse", namespace = "http://tempuri.org/")
-public class GetItineraryResponse {
+@XmlRootElement(name = "DebugResponse")
+public class DebugResponse {
 
-    @XmlElementRef(name = "GetItineraryResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<LgbDirections> getItineraryResult;
+    @XmlElementRef(name = "DebugResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> debugResult;
 
     /**
-     * Gets the value of the getItineraryResult property.
+     * Gets the value of the debugResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LgbDirections }{@code >}
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<LgbDirections> getGetItineraryResult() {
-        return getItineraryResult;
+    public JAXBElement<String> getDebugResult() {
+        return debugResult;
     }
 
     /**
-     * Sets the value of the getItineraryResult property.
+     * Sets the value of the debugResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LgbDirections }{@code >}
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setGetItineraryResult(JAXBElement<LgbDirections> value) {
-        this.getItineraryResult = value;
+    public void setDebugResult(JAXBElement<String> value) {
+        this.debugResult = value;
     }
 
 }

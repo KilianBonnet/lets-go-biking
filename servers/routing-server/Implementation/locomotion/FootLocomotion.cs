@@ -1,9 +1,10 @@
 ﻿using System.Device.Location;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using routing_server.Helper.open_route_objects;
+using routing_server.Implementation.Helper;
+using routing_server.Implementation.Helper.open_route_objects;
 
-namespace routing_server.Helper.locomotion
+namespace routing_server.Implementation.locomotion
 {
     public class FootLocomotion
     {

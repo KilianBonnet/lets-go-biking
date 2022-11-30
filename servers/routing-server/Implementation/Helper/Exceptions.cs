@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace routing_server.Helper
+namespace routing_server.Implementation.Helper
 {
     [Serializable]
     public class AddressNotFoundException : Exception

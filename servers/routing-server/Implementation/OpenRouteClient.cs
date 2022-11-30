@@ -2,10 +2,10 @@
 using System.Device.Location;
 using System.Net.Http;
 using System.Threading.Tasks;
-using routing_server.Helper.locomotion;
+using routing_server.Implementation.locomotion;
 
 
-namespace routing_server {
+namespace routing_server.Implementation {
     public class OpenRouteClient
     {
         // Client configuration

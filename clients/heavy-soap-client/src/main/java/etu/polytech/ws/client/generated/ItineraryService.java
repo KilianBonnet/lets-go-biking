@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "ItineraryService", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://localhost:8733/Design_Time_Addresses/routing_server/Service1/?wsdl")
+@WebServiceClient(name = "ItineraryService", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://localhost:8733/Design_Time_Addresses/routing_server/ItineraryService/?wsdl")
 public class ItineraryService
     extends Service
 {
@@ -30,7 +30,7 @@ public class ItineraryService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8733/Design_Time_Addresses/routing_server/Service1/?wsdl");
+            url = new URL("http://localhost:8733/Design_Time_Addresses/routing_server/ItineraryService/?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

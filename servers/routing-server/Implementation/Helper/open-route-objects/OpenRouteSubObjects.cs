@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace routing_server.Helper.open_route_objects
+namespace routing_server.Implementation.Helper.open_route_objects
 {
     public class PointFeature
     {

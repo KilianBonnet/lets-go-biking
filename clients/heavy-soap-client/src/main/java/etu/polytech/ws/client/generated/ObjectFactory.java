@@ -28,9 +28,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _LgbDirections_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", "LgbDirections");
-    private final static QName _ArrayOfLgbStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", "ArrayOfLgbStep");
-    private final static QName _LgbStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", "LgbStep");
+    private final static QName _LgbDirections_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "LgbDirections");
+    private final static QName _ArrayOfLgbStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "ArrayOfLgbStep");
+    private final static QName _LgbStep_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "LgbStep");
     private final static QName _AnyType_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyType");
     private final static QName _AnyURI_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "anyURI");
     private final static QName _Base64Binary_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "base64Binary");
@@ -55,8 +55,9 @@ public class ObjectFactory {
     private final static QName _GetItineraryDepartureAddress_QNAME = new QName("http://tempuri.org/", "departureAddress");
     private final static QName _GetItineraryArrivalAddress_QNAME = new QName("http://tempuri.org/", "arrivalAddress");
     private final static QName _GetItineraryResponseGetItineraryResult_QNAME = new QName("http://tempuri.org/", "GetItineraryResult");
-    private final static QName _LgbStepIndication_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", "Indication");
-    private final static QName _LgbDirectionsSteps_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", "Steps");
+    private final static QName _LgbStepIndication_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "Indication");
+    private final static QName _LgbDirectionsSteps_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "Steps");
+    private final static QName _LgbDirectionsActivemqQueueID_QNAME = new QName("http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", "activemqQueueID");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: etu.polytech.ws.client.generated
@@ -113,7 +114,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link LgbDirections }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", name = "LgbDirections")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "LgbDirections")
     public JAXBElement<LgbDirections> createLgbDirections(LgbDirections value) {
         return new JAXBElement<LgbDirections>(_LgbDirections_QNAME, LgbDirections.class, null, value);
     }
@@ -126,7 +127,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfLgbStep }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", name = "ArrayOfLgbStep")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "ArrayOfLgbStep")
     public JAXBElement<ArrayOfLgbStep> createArrayOfLgbStep(ArrayOfLgbStep value) {
         return new JAXBElement<ArrayOfLgbStep>(_ArrayOfLgbStep_QNAME, ArrayOfLgbStep.class, null, value);
     }
@@ -139,7 +140,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link LgbStep }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", name = "LgbStep")
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "LgbStep")
     public JAXBElement<LgbStep> createLgbStep(LgbStep value) {
         return new JAXBElement<LgbStep>(_LgbStep_QNAME, LgbStep.class, null, value);
     }
@@ -464,7 +465,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", name = "Indication", scope = LgbStep.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "Indication", scope = LgbStep.class)
     public JAXBElement<String> createLgbStepIndication(String value) {
         return new JAXBElement<String>(_LgbStepIndication_QNAME, String.class, LgbStep.class, value);
     }
@@ -477,9 +478,22 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ArrayOfLgbStep }{@code >}
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", name = "Steps", scope = LgbDirections.class)
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "Steps", scope = LgbDirections.class)
     public JAXBElement<ArrayOfLgbStep> createLgbDirectionsSteps(ArrayOfLgbStep value) {
         return new JAXBElement<ArrayOfLgbStep>(_LgbDirectionsSteps_QNAME, ArrayOfLgbStep.class, LgbDirections.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", name = "activemqQueueID", scope = LgbDirections.class)
+    public JAXBElement<String> createLgbDirectionsActivemqQueueID(String value) {
+        return new JAXBElement<String>(_LgbDirectionsActivemqQueueID_QNAME, String.class, LgbDirections.class, value);
     }
 
 }

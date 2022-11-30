@@ -1,10 +1,10 @@
 ﻿using System.Device.Location;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using routing_server.Helper.open_route_objects;
+using routing_server.Implementation.Helper.open_route_objects;
 using routing_server.JCDecauxService;
 
-namespace routing_server.Helper
+namespace routing_server.Implementation.Helper
 {
     internal class ApiProcessing
     {

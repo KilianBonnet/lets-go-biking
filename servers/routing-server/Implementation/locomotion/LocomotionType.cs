@@ -1,4 +1,4 @@
-﻿namespace routing_server.Helper.locomotion
+﻿namespace routing_server.Implementation.locomotion
 {
     public class LocomotionType
     {

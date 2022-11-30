@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="GetItineraryResult" type="{http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects}LgbDirections" minOccurs="0"/&gt;
+ *         &lt;element name="GetItineraryActiveMQResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,36 +30,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getItineraryResult"
+    "getItineraryActiveMQResult"
 })
-@XmlRootElement(name = "GetItineraryResponse", namespace = "http://tempuri.org/")
-public class GetItineraryResponse {
+@XmlRootElement(name = "GetItineraryActiveMQResponse")
+public class GetItineraryActiveMQResponse {
 
-    @XmlElementRef(name = "GetItineraryResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
-    protected JAXBElement<LgbDirections> getItineraryResult;
+    @XmlElementRef(name = "GetItineraryActiveMQResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> getItineraryActiveMQResult;
 
     /**
-     * Gets the value of the getItineraryResult property.
+     * Gets the value of the getItineraryActiveMQResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LgbDirections }{@code >}
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<LgbDirections> getGetItineraryResult() {
-        return getItineraryResult;
+    public JAXBElement<String> getGetItineraryActiveMQResult() {
+        return getItineraryActiveMQResult;
     }
 
     /**
-     * Sets the value of the getItineraryResult property.
+     * Sets the value of the getItineraryActiveMQResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LgbDirections }{@code >}
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setGetItineraryResult(JAXBElement<LgbDirections> value) {
-        this.getItineraryResult = value;
+    public void setGetItineraryActiveMQResult(JAXBElement<String> value) {
+        this.getItineraryActiveMQResult = value;
     }
 
 }

@@ -23,9 +23,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="BikeDuration" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="FootDistance" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="FootDuration" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
- *         &lt;element name="Steps" type="{http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects}ArrayOfLgbStep" minOccurs="0"/&gt;
+ *         &lt;element name="Steps" type="{http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects}ArrayOfLgbStep" minOccurs="0"/&gt;
  *         &lt;element name="TotalDistance" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
  *         &lt;element name="TotalDuration" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/&gt;
+ *         &lt;element name="activemqQueueID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,7 +43,8 @@ import javax.xml.bind.annotation.XmlType;
     "footDuration",
     "steps",
     "totalDistance",
-    "totalDuration"
+    "totalDuration",
+    "activemqQueueID"
 })
 public class LgbDirections {
 
@@ -54,12 +56,14 @@ public class LgbDirections {
     protected Double footDistance;
     @XmlElement(name = "FootDuration")
     protected Double footDuration;
-    @XmlElementRef(name = "Steps", namespace = "http://schemas.datacontract.org/2004/07/routing_server.Helper.open_route_objects", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Steps", namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", type = JAXBElement.class, required = false)
     protected JAXBElement<ArrayOfLgbStep> steps;
     @XmlElement(name = "TotalDistance")
     protected Double totalDistance;
     @XmlElement(name = "TotalDuration")
     protected Double totalDuration;
+    @XmlElementRef(name = "activemqQueueID", namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> activemqQueueID;
 
     /**
      * Gets the value of the bikeDistance property.
@@ -227,6 +231,30 @@ public class LgbDirections {
      */
     public void setTotalDuration(Double value) {
         this.totalDuration = value;
+    }
+
+    /**
+     * Gets the value of the activemqQueueID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getActivemqQueueID() {
+        return activemqQueueID;
+    }
+
+    /**
+     * Sets the value of the activemqQueueID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setActivemqQueueID(JAXBElement<String> value) {
+        this.activemqQueueID = value;
     }
 
 }

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using routing_server.Helper.locomotion;
+using routing_server.Implementation.locomotion;
 
-namespace routing_server.Helper.open_route_objects
+namespace routing_server.Implementation.Helper.open_route_objects
 {
     public class LgbStep
     {
@@ -13,6 +12,8 @@ namespace routing_server.Helper.open_route_objects
 
     public class LgbDirections
     {
+        public string activemqQueueID;
+        
         public double TotalDuration;
         public double TotalDistance;
         

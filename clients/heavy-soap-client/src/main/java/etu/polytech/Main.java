@@ -1,25 +1,31 @@
 package etu.polytech;
 
+import etu.polytech.directionObjects.Step;
 import etu.polytech.ws.client.generated.IItineraryService;
 import etu.polytech.ws.client.generated.ItineraryService;
 import etu.polytech.ws.client.generated.LgbDirections;
 import etu.polytech.ws.client.generated.LgbStep;
+import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 
+import javax.jms.JMSException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     private static final ItineraryService itineraryService = new ItineraryService();
     private static IItineraryService lgbService;
 
-    public static void main(String[] args) {
-       // Initializing service
+    public static void main(String[] args) throws JMSException, JsonProcessingException {
+        // Initializing services
         lgbService = itineraryService.getBasicHttpBindingIItineraryService();
 
         // Asking directions
-        LgbDirections directions = askDirections();
+        LgbDirections lgbDirections = askDirections();
 
-        // Displaying directions
-        display(directions);
+        displayItineraryInformation(lgbDirections);
+
+        List<Step> steps = ActivemqConsumer.ConsumeSteps(lgbDirections.getActivemqQueueID().getValue());
+        displaySteps(steps);
     }
 
     private static LgbDirections askDirections(){
@@ -37,8 +43,7 @@ public class Main {
         }
     }
 
-    private static void display(LgbDirections directions){
-        // Displaying the global information of the itinerary
+    private static void displayItineraryInformation(LgbDirections directions){
         separator();
         if(directions.getBikeDuration() > 0){
             System.out.println("[INFO] A bike will be needed for this itinerary!");
@@ -55,14 +60,16 @@ public class Main {
             System.out.println("Bike duration: " + ((int)(directions.getBikeDuration() / 60)) + "min");
             separator();
         }
+    }
 
+    private static void displaySteps(List<Step> steps){
         // Displaying the different steps of the itinerary
-        for(LgbStep lgbStep : directions.getSteps().getValue().getLgbStep()){
-            System.out.println(lgbStep.getIndication().getValue());
-            if(lgbStep.getDistance() > 0)
-                System.out.println("    Distance: " + String.format("%.02f", lgbStep.getDistance() / 1000) + "km");
-            if(lgbStep.getDuration() > 0)
-                System.out.println("    Duration: " + ((int)(lgbStep.getDuration() / 60)) + "min");
+        for(Step step : steps){
+            System.out.println(step.Indication);
+            if(step.Distance > 0)
+                System.out.println("    Distance: " + String.format("%.02f", step.Distance / 1000) + "km");
+            if(step.Duration > 0)
+                System.out.println("    Duration: " + ((int)(step.Duration / 60)) + "min");
             System.out.println();
         }
     }
