@@ -10,7 +10,7 @@ namespace routing_server.Implementation
 {
     public class ActivemqProducer
     {
-        private static readonly ConnectionFactory connectionFactory = new ConnectionFactory("activemq:tcp://localhost:61616");
+        private static readonly ConnectionFactory connectionFactory = new ConnectionFactory(Config.ACTIVEMQ_SERVER_URL);
         
         //Singleton design patter
         public static readonly ActivemqProducer Instance = new ActivemqProducer();
