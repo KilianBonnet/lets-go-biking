@@ -7,11 +7,10 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 public class ActivemqConsumer {
-    public static final ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+    public static final ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(Config.ACTIVEMQ_SERVER_URL);
 
     public static List<Step> ConsumeSteps(String queueGuid) throws JMSException, JsonProcessingException {
         // Create a Connection

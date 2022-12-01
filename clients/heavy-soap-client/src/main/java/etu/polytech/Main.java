@@ -4,7 +4,6 @@ import etu.polytech.directionObjects.Step;
 import etu.polytech.ws.client.generated.IItineraryService;
 import etu.polytech.ws.client.generated.ItineraryService;
 import etu.polytech.ws.client.generated.LgbDirections;
-import etu.polytech.ws.client.generated.LgbStep;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.jms.JMSException;
