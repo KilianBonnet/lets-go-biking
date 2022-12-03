@@ -2,7 +2,6 @@
 using routing_server.Implementation;
 using routing_server.Implementation.Helper;
 using routing_server.Implementation.locomotion;
-using routing_server.Implementation.Helper.open_route_objects;
 
 namespace routing_server.Interface
 {

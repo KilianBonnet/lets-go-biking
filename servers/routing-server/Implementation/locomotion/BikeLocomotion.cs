@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using routing_server.Implementation.Helper;
-using routing_server.Implementation.Helper.open_route_objects;
 using routing_server.JCDecauxService;
 
 namespace routing_server.Implementation.locomotion
@@ -28,8 +27,8 @@ namespace routing_server.Implementation.locomotion
             try
             {
                 // Check the nearest station from the departure & the arrival point
-                departureStation = await apiProcessing.GetNearestAvailableStation(departure);
-                arrivalStation = await apiProcessing.GetNearestAvailableStation(arrival);
+                departureStation = await apiProcessing.GetNearestAvailableStation(departure, BikeAvailability.TAKE);
+                arrivalStation = await apiProcessing.GetNearestAvailableStation(arrival, BikeAvailability.DEPOSIT);
             } 
             catch (CityNotCoveredException) {}
 

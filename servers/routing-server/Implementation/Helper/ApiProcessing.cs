@@ -2,7 +2,6 @@
 using System.Device.Location;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using routing_server.Implementation.Helper.open_route_objects;
 using routing_server.JCDecauxService;
 
 namespace routing_server.Implementation.Helper
@@ -39,37 +38,53 @@ namespace routing_server.Implementation.Helper
             throw new CityNotCoveredException();
         }
 
-        public async Task<Station> GetNearestAvailableStation(OpenRoutePoint openRoutePoint)
+        public async Task<Station> GetNearestAvailableStation(OpenRoutePoint openRoutePoint, BikeAvailability availability)
         {
             // Retrieving the contract who covers the user's city
             string coveringContractName = await GetClosestContractName(openRoutePoint);
 
-            // Retrieving all the stations (without the details) form the given contract
+            // Retrieving all the stations form the given contract
             Station[] stations = await jcDecauxClient.GetStationsAsync(coveringContractName);
+            if (stations.Length == 0)
+                throw new CityNotCoveredException();
 
             // Finding the number of the closest station
-            return FindClosestStation(openRoutePoint, stations);
+            return FindClosestStation(openRoutePoint, stations, availability);
         }
 
-        private Station FindClosestStation(OpenRoutePoint openRoutePoint, Station[] stations)
+        private Station FindClosestStation(OpenRoutePoint openRoutePoint, Station[] stations, BikeAvailability availability)
         {
-            int bestIndex = 0;
-            GeoCoordinate bestPosition = new GeoCoordinate(stations[0].position.lat, 
-                stations[0].position.lng);
             GeoCoordinate userPosition = new GeoCoordinate(openRoutePoint.features[0].geometry.coordinates[1],
                 openRoutePoint.features[0].geometry.coordinates[0]);
+            
+            int bestIndex = -1;
+            GeoCoordinate bestPosition = null;
 
-            for (int i = 1; i < stations.Length; i++)
+            for (int i = 0; i < stations.Length; i++)
             {
+                // Check if there is an available bike stand on the given station when user want to deposit his bike
+                if(availability == BikeAvailability.DEPOSIT && stations[0].available_bike_stands == 0)
+                    continue;
+                
+                // Check if there is an available bike on the given station when user want to take a bike
+                if(availability == BikeAvailability.TAKE && stations[0].available_bikes == 0)
+                    continue;
+                
                 GeoCoordinate currentGeoCoordinate = new GeoCoordinate(stations[i].position.lat,
                     stations[i].position.lng);
-                if (currentGeoCoordinate.GetDistanceTo(userPosition) < bestPosition.GetDistanceTo(userPosition))
+                
+                if (bestPosition == null)
                 {
                     bestIndex = i;
                     bestPosition = currentGeoCoordinate;
                 }
+                if (currentGeoCoordinate.GetDistanceTo(userPosition) >= bestPosition.GetDistanceTo(userPosition))
+                    continue;
+                
+                bestIndex = i;
+                bestPosition = currentGeoCoordinate;
             }
-            Console.WriteLine(stations[bestIndex].name);
+            
             return stations[bestIndex];
         }
     }

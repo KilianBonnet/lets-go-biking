@@ -76,10 +76,10 @@
     </Compile>
     <Compile Include="Implementation\ActivemqProducer.cs" />
     <Compile Include="Implementation\Helper\ApiProcessing.cs" />
+    <Compile Include="Implementation\Helper\BikeAvailability.cs" />
     <Compile Include="Implementation\Helper\Exceptions.cs" />
-    <Compile Include="Implementation\Helper\open-route-objects\LgbDirections.cs" />
-    <Compile Include="Implementation\Helper\open-route-objects\OpenRoutePoint.cs" />
-    <Compile Include="Implementation\Helper\open-route-objects\OpenRouteSubObjects.cs" />
+    <Compile Include="Implementation\Helper\OpenRouteSubObjects.cs" />
+    <Compile Include="Implementation\LgbDirections.cs" />
     <Compile Include="Implementation\locomotion\BikeLocomotion.cs" />
     <Compile Include="Implementation\locomotion\FootLocomotion.cs" />
     <Compile Include="Implementation\locomotion\LocomotionType.cs" />

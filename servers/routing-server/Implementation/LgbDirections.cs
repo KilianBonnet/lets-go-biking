@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using routing_server.Implementation.Helper;
 using routing_server.Implementation.locomotion;
 
-namespace routing_server.Implementation.Helper.open_route_objects
+namespace routing_server.Implementation
 {
     public class LgbStep
     {
