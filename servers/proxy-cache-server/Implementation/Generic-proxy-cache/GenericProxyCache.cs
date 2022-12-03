@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Caching;
 
 namespace proxy_cache_server.Implementation.Generic_proxy_cache
