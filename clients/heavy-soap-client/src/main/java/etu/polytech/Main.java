@@ -72,7 +72,11 @@ public class Main {
             if(step.Distance > 0)
                 System.out.println("    Distance: " + String.format("%.02f", step.Distance / 1000) + "km");
             if(step.Duration > 0)
-                System.out.println("    Duration: " + ((int)(step.Duration)) + " sec");
+                if(step.Duration < 60)
+                    System.out.println("    Duration: " + ((int)(step.Duration)) + "sec");
+                else
+                    System.out.println("    Duration: " + ((int)(step.Duration / 60)) + "min");
+
             System.out.println();
         }
     }

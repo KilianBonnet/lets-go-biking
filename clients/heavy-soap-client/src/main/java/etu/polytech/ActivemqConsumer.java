@@ -27,11 +27,15 @@ public class ActivemqConsumer {
         MessageConsumer consumer = session.createConsumer(destination);
 
         List<Step> steps = new ArrayList<>();
-        QueueBrowser browser = session.createBrowser(session.createQueue(queueGuid));
-        var enu = browser.getEnumeration();
-        while (enu.hasMoreElements()) {
-            TextMessage message = (TextMessage) enu.nextElement();
-            Step step = new ObjectMapper().readValue(message.getText(), Step.class);
+
+        // Consuming al messages on the stack
+        while (true) {
+            Message message = consumer.receive(5000);
+
+            if (!(message instanceof TextMessage)) break;
+
+            TextMessage textMessage = (TextMessage) message;
+            Step step = new ObjectMapper().readValue(textMessage.getText(), Step.class);
             steps.add(step);
         }
 
