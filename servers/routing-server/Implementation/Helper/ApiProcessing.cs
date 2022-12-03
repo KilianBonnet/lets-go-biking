@@ -1,4 +1,5 @@
-﻿using System.Device.Location;
+﻿using System;
+using System.Device.Location;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using routing_server.Implementation.Helper.open_route_objects;
@@ -38,21 +39,19 @@ namespace routing_server.Implementation.Helper
             throw new CityNotCoveredException();
         }
 
-        public async Task<StationInformation> GetNearestAvailableStation(OpenRoutePoint openRoutePoint)
+        public async Task<Station> GetNearestAvailableStation(OpenRoutePoint openRoutePoint)
         {
             // Retrieving the contract who covers the user's city
             string coveringContractName = await GetClosestContractName(openRoutePoint);
 
             // Retrieving all the stations (without the details) form the given contract
             Station[] stations = await jcDecauxClient.GetStationsAsync(coveringContractName);
-            
+
             // Finding the number of the closest station
-            int closestStationId = FindClosestStationId(openRoutePoint, stations);
-            
-            return await jcDecauxClient.GetStationInfoAsync(coveringContractName, closestStationId);
+            return FindClosestStation(openRoutePoint, stations);
         }
 
-        private int FindClosestStationId(OpenRoutePoint openRoutePoint, Station[] stations)
+        private Station FindClosestStation(OpenRoutePoint openRoutePoint, Station[] stations)
         {
             int bestIndex = 0;
             GeoCoordinate bestPosition = new GeoCoordinate(stations[0].position.lat, 
@@ -70,8 +69,8 @@ namespace routing_server.Implementation.Helper
                     bestPosition = currentGeoCoordinate;
                 }
             }
-            
-            return stations[bestIndex].number;
+            Console.WriteLine(stations[bestIndex].name);
+            return stations[bestIndex];
         }
     }
 }

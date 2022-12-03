@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using proxy_cache_server.Cache;
 using proxy_cache_server.Implementation;
+using proxy_cache_server.Implementation.Generic_proxy_cache;
 
 namespace proxy_cache_server.Interface
 {
@@ -9,21 +9,15 @@ namespace proxy_cache_server.Interface
     {
         private static readonly CacheManager cacheManager = CacheManager.Instance;
 
-        public async Task<List<Contract>> GetContractsAsync()
+        public List<Contract> GetContracts()
         {
-            return await cacheManager.GetContractsAsync();
+            return cacheManager.GetContracts();
         }
 
-        public async Task<List<Station>> GetStationsAsync(string contractName)
+        public List<Station> GetStations(string contractName)
         {
             if (contractName == null) contractName = "";
-            return await cacheManager.GetStationsAsync(contractName);
-        }
-
-        public async Task<StationInformation> GetStationInfoAsync(string contractName, int stationNumber)
-        {
-            if (contractName == null) contractName = "";
-            return await cacheManager.GetStationInfoAsync(contractName, stationNumber);
+            return cacheManager.GetStations(contractName);
         }
     }
 }

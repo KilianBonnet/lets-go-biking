@@ -21,7 +21,7 @@ namespace routing_server.Implementation
             // Create a single Connection from the Connection Factory.
             IConnection connection = connectionFactory.CreateConnection();
             connection.Start();
-
+            
             // Create a session from the Connection.
             ISession session = connection.CreateSession();
             

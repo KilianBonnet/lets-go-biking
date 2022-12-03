@@ -7,6 +7,7 @@ using proxy_cache_server.Interface;
 // add the WCF ServiceModel namespace 
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using proxy_cache_server.Implementation.Generic_proxy_cache;
 
 namespace proxy_cache_server
 {
@@ -32,10 +33,9 @@ namespace proxy_cache_server
             //Start the Service
             host.Open();
 
-            Console.WriteLine("Service is host at " + DateTime.Now);
+            Console.WriteLine("JCDecaux service is host at " + DateTime.Now);
             Console.WriteLine("Host is running... Press <Enter> key to stop");
             Console.ReadLine();
-
         }
     }
 }

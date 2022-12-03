@@ -23,8 +23,8 @@ namespace routing_server.Implementation.locomotion
 
         public async Task<LgbDirections> GetDirections()
         {
-            StationInformation departureStation = null;
-            StationInformation arrivalStation = null;
+            Station departureStation = null;
+            Station arrivalStation = null;
             try
             {
                 // Check the nearest station from the departure & the arrival point

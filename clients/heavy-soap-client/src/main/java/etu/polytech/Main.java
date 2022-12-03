@@ -38,6 +38,10 @@ public class Main {
         }
         catch (Exception e){
             System.err.println("Invalid address, may try to enter more details (city, code, ...)");
+
+            try {Thread.sleep(500);}
+            catch (InterruptedException ignored) {}
+
             return askDirections();
         }
     }

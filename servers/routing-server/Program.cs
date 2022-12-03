@@ -28,7 +28,7 @@ namespace routing_server
             //Start the Service
             host.Open();
 
-            Console.WriteLine("Service is host at " + DateTime.Now);
+            Console.WriteLine("Routing server is host at " + DateTime.Now);
             Console.WriteLine("Host is running... Press <Enter> key to stop");
             Console.ReadLine();
         }

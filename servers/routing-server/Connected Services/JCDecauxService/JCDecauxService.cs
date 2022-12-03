@@ -87,125 +87,6 @@ namespace routing_server.JCDecauxService
         
         private string addressField;
         
-        private string contract_nameField;
-        
-        private string nameField;
-        
-        private int numberField;
-        
-        private routing_server.JCDecauxService.Position positionField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string address
-        {
-            get
-            {
-                return this.addressField;
-            }
-            set
-            {
-                this.addressField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string contract_name
-        {
-            get
-            {
-                return this.contract_nameField;
-            }
-            set
-            {
-                this.contract_nameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int number
-        {
-            get
-            {
-                return this.numberField;
-            }
-            set
-            {
-                this.numberField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public routing_server.JCDecauxService.Position position
-        {
-            get
-            {
-                return this.positionField;
-            }
-            set
-            {
-                this.positionField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
-    public partial class Position : object
-    {
-        
-        private double latField;
-        
-        private double lngField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double lat
-        {
-            get
-            {
-                return this.latField;
-            }
-            set
-            {
-                this.latField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double lng
-        {
-            get
-            {
-                return this.lngField;
-            }
-            set
-            {
-                this.lngField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StationInformation", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
-    public partial class StationInformation : object
-    {
-        
-        private string addressField;
-        
         private int available_bike_standsField;
         
         private int available_bikesField;
@@ -385,6 +266,43 @@ namespace routing_server.JCDecauxService
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Position", Namespace="http://schemas.datacontract.org/2004/07/proxy_cache_server.Implementation")]
+    public partial class Position : object
+    {
+        
+        private double latField;
+        
+        private double lngField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double lat
+        {
+            get
+            {
+                return this.latField;
+            }
+            set
+            {
+                this.latField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double lng
+        {
+            get
+            {
+                return this.lngField;
+            }
+            set
+            {
+                this.lngField = value;
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="routing_server.JCDecauxService.IJCDecauxService")]
     public interface IJCDecauxService
@@ -395,9 +313,6 @@ namespace routing_server.JCDecauxService
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxService/GetStations", ReplyAction="http://tempuri.org/IJCDecauxService/GetStationsResponse")]
         System.Threading.Tasks.Task<routing_server.JCDecauxService.Station[]> GetStationsAsync(string contractName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IJCDecauxService/GetStationInfo", ReplyAction="http://tempuri.org/IJCDecauxService/GetStationInfoResponse")]
-        System.Threading.Tasks.Task<routing_server.JCDecauxService.StationInformation> GetStationInfoAsync(string contractName, int stationNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
@@ -458,11 +373,6 @@ namespace routing_server.JCDecauxService
         public System.Threading.Tasks.Task<routing_server.JCDecauxService.Station[]> GetStationsAsync(string contractName)
         {
             return base.Channel.GetStationsAsync(contractName);
-        }
-        
-        public System.Threading.Tasks.Task<routing_server.JCDecauxService.StationInformation> GetStationInfoAsync(string contractName, int stationNumber)
-        {
-            return base.Channel.GetStationInfoAsync(contractName, stationNumber);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

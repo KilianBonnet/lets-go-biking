@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Threading.Tasks;
 using proxy_cache_server.Implementation;
 
 namespace proxy_cache_server.Interface
@@ -9,12 +8,9 @@ namespace proxy_cache_server.Interface
     public interface IJCDecauxService
     {
         [OperationContract]
-        Task<List<Contract>>GetContractsAsync();
+        List<Contract> GetContracts();
 
         [OperationContract]
-        Task<List<Station>> GetStationsAsync(string contractName);
-
-        [OperationContract]
-        Task<StationInformation> GetStationInfoAsync(string contractName, int stationNumber);
+        List<Station> GetStations(string contractName);
     }
 }
