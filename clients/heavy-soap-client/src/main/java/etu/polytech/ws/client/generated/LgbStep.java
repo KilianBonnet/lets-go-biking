@@ -42,7 +42,7 @@ public class LgbStep {
     protected Double distance;
     @XmlElement(name = "Duration")
     protected Double duration;
-    @XmlElementRef(name = "Indication", namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation.Helper.open_route_objects", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Indication", namespace = "http://schemas.datacontract.org/2004/07/routing_server.Implementation", type = JAXBElement.class, required = false)
     protected JAXBElement<String> indication;
 
     /**
