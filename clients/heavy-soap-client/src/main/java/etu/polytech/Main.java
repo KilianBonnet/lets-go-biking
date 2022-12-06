@@ -37,7 +37,9 @@ public class Main {
             return lgbService.getItinerary(departureAddress, arrivalAddress);
         }
         catch (Exception e){
-            System.err.println("Invalid address, may try to enter more details (city, code, ...)");
+            System.err.println("An error occurred");
+            System.err.println("    1 - Invalid address, may try to enter more details (city, code, ...)");
+            System.err.println("    2 - Is ActiveMQ started ?");
 
             try {Thread.sleep(500);}
             catch (InterruptedException ignored) {}

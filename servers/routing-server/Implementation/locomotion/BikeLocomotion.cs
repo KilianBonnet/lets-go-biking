@@ -56,7 +56,7 @@ namespace routing_server.Implementation.locomotion
             LgbStep customStep = new LgbStep
             {
                 Distance = 0,
-                Duration = 1,
+                Duration = 60,
                 Indication = "Take a bike from the station."
             };
             LgbDirectionBuilder.AddStep(lgbDirections, customStep, LocomotionType.BIKE);
@@ -69,7 +69,7 @@ namespace routing_server.Implementation.locomotion
             customStep = new LgbStep
             {
                 Distance = 0,
-                Duration = 1,
+                Duration = 60,
                 Indication = "Return the bike at the station."
             };
             LgbDirectionBuilder.AddStep(lgbDirections, customStep, LocomotionType.BIKE);
